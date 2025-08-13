@@ -1,0 +1,1121 @@
+
+Submission Info
+Students:
+kbartlett8@huskers.unl.edu
+erhode3@huskers.unl.edu
+Tests
+Your instructor didn't define any tests for this assignment.
+Files
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+[Ctrl1]Address.java
+[Ctrl2]Company.java
+[Ctrl3]ConnectionPool.java
+[Ctrl4]Contract.java
+[Ctrl5]CustomerSummary.java
+[Ctrl6]DatabaseInfo.java
+[Ctrl7]DataConverter.java
+[Ctrl8]DataLoader.java
+[Ctrl9]EntityTests.java
+Equipment.java
+Invoice.java
+InvoiceData.java
+InvoiceReport.java
+InvoiceTests.java
+Item.java
+JDBCDataLoader.java
+LeasedItem.java
+Material.java
+Person.java
+RentedItem.java
+SortedLinkedList.java
++
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+-
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+SortedLinkedListNode.java
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+package com.vgb;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * Loads data from a database (Persons, Companies, Items, Invoice Items)
+ */
+public class JDBCDataLoader {
+
+	    public static Map<String, Person> loadPersonDataJDBC(ConnectionPool pool, Map<String, Person> personMap) {
+	        String query = """
+	            SELECT p.personId, p.uuid AS uuid, p.firstName, p.lastName, p.phone, e.email
+	            FROM Person p
+	            LEFT JOIN Email e ON p.personId = e.personId
+	        """;
+
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+
+	            Map<String, List<String>> emailMap = new HashMap<>();
+
+	            while (rs.next()) {
+	                String uuid = rs.getString("uuid");
+	                emailMap.computeIfAbsent(uuid, k -> new ArrayList<>());
+	                String email = rs.getString("email");
+	                if (email != null) emailMap.get(uuid).add(email);
+
+	                if (!personMap.containsKey(uuid)) {
+	                    String firstName = rs.getString("firstName");
+	                    String lastName = rs.getString("lastName");
+	                    String phone = rs.getString("phone");
+	                    Person person = new Person(UUID.fromString(uuid), lastName, firstName, phone, emailMap.get(uuid));
+	                    personMap.put(uuid, person);
+	                }
+	            }
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading person data", e);
+	        }
+
+	        return personMap;
+	    }
+
+	    public static Map<String, Company> loadCompanyDataJDBC(ConnectionPool pool, Map<String, Company> companyMap, Map<String, Person> personMap) {
+	        String query = """
+	            SELECT c.companyId, c.uuid AS uuid, c.name, c.contactId,
+	                   a.street, z.city, z.zipCode AS zip, s.stateName,
+	                   p.personId, p.uuid AS personUuid
+	            FROM Company c
+	            JOIN Address a ON c.addressId = a.addressId
+	            JOIN Zip z ON a.zipId = z.zipId
+	            JOIN State s ON z.stateId = s.stateId
+	            JOIN Person p ON c.contactId = p.personId
+	        """;
+
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+
+	            while (rs.next()) {
+	                String companyUuid = rs.getString("uuid");
+	                String name = rs.getString("name");
+	                String street = rs.getString("street");
+	                String city = rs.getString("city");
+	                String state = rs.getString("stateName");
+	                String zip = rs.getString("zip");
+
+	                Address address = new Address(street, city, state, zip);
+	                String contactUuid = rs.getString("personUuid");
+	                Person contact = personMap.get(contactUuid);
+
+	                if (contact == null) {
+	                    System.out.println("No contact found for company " + companyUuid);
+	                    continue;
+	                }
+
+	                Company company = new Company(UUID.fromString(companyUuid), contact, name, address);
+	                companyMap.put(companyUuid, company);
+	            }
+
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading company data", e);
+	        }
+
+	        return companyMap;
+	    }
+
+	    public static Map<String, Item> loadItemDataJDBC(ConnectionPool pool, Map<String, Item> itemMap, Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT i.uuid, i.name, i.type, i.price, i.materialUnit, i.equipmentModelNumber,
+	                   i.contractCompanyId, c.uuid AS companyUuid
+	            FROM Item i
+	            LEFT JOIN Company c ON i.contractCompanyId = c.companyId
+	        """;
+
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+
+	            while (rs.next()) {
+	                String uuid = rs.getString("uuid");
+	                String name = rs.getString("name");
+	                char type = rs.getString("type").charAt(0);
+	                double price = rs.getDouble("price");
+	                Item item = null;
+
+	                switch (type) {
+	                    case 'M':
+	                        String materialUnit = rs.getString("materialUnit");
+	                        item = new Material(UUID.fromString(uuid), name, materialUnit, price);
+	                        break;
+	                    case 'E':
+	                        String modelNumber = rs.getString("equipmentModelNumber");
+	                        item = new Equipment(UUID.fromString(uuid), name, modelNumber, price);
+	                        break;
+	                    case 'C':
+	                        String companyId = rs.getString("contractCompanyId");
+	                        Company contractCompany = companyMap.get(companyId);
+	                        if (contractCompany != null) {
+	                            item = new Contract(UUID.fromString(uuid), name, contractCompany);
+	                        }
+	                        break;
+	                }
+
+	                if (item != null) {
+	                    itemMap.put(uuid, item);
+	                }
+	            }
+
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading item data", e);
+	        }
+
+	        return itemMap;
+	    }
+
+	    public static Map<String, Invoice> loadInvoiceDataJDBC(ConnectionPool pool, Map<String, Invoice> invoiceMap,
+	                                                            Map<String, Person> personMap, Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT i.uuid AS invoiceUuid, i.date, p.uuid AS personUuid, c.uuid AS companyUUID
+	            FROM Invoice i
+	            LEFT JOIN Person p ON i.salesPersonId = p.personId
+	            LEFT JOIN Company c ON i.customerId = c.companyId
+	        """;
+
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+
+	            while (rs.next()) {
+	                String invoiceUuid = rs.getString("invoiceUuid");
+	                LocalDate date = LocalDate.parse(rs.getString("date"));
+	                Company company = companyMap.get(rs.getString("companyUUID"));
+	                Person person = personMap.get(rs.getString("personUuid"));
+
+	                Invoice invoice = new Invoice(UUID.fromString(invoiceUuid), date, company, person);
+	                invoiceMap.put(invoiceUuid, invoice);
+	            }
+
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading invoice data", e);
+	        }
+
+	        return invoiceMap;
+	    }
+
+	    public static Map<String, Invoice> loadInvoiceItemsJDBC(ConnectionPool pool, Map<String, Invoice> invoiceMap, Map<String, Item> itemMap,
+	    		Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT ii.invoiceId, i.uuid AS itemUuid, i.name AS itemName, ii.type,
+	                   i.price, i.materialUnit, i.equipmentModelNumber AS modelNumber,
+	                   ii.materialQuantity AS quantity, ii.rentalHours AS hours,
+	                   ii.leaseStartDate, ii.leaseEndDate, inv.uuid AS invoiceUuid, c.uuid AS contractCompanyUuid
+	            FROM InvoiceItem ii
+	            JOIN Item i ON ii.itemId = i.itemId
+	            LEFT JOIN Company c ON i.contractCompanyId = c.companyId
+	            JOIN Invoice inv ON ii.invoiceId = inv.invoiceId
+	        """;
+
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+
+	            while (rs.next()) {
+	                String invoiceUuid = rs.getString("invoiceUuid");
+	                String itemUuid = rs.getString("itemUuid");
+	                String name = rs.getString("itemName");
+	                char type = rs.getString("type").charAt(0);
+	                double price = rs.getDouble("price");
+	                Company company = companyMap.get(rs.getString("contractCompanyUuid"));
+
+	                Item newItem = switch (type) {
+	                    case 'M' -> new Material(UUID.fromString(itemUuid), name, rs.getString("materialUnit"), price, rs.getInt("quantity"));
+	                    case 'R' -> new RentedItem(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price, rs.getDouble("hours"));
+	                    case 'L' -> new LeasedItem(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price,
+	                            LocalDate.parse(rs.getString("leaseStartDate")), LocalDate.parse(rs.getString("leaseEndDate")), 0.5);
+	                    case 'P' -> new Equipment(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price);
+	                    case 'C' -> new Contract(UUID.fromString(itemUuid), name, company, price);
+	                
+	                    default -> null;
+	                };
+
+	                if (newItem != null) {
+	                    invoiceMap.get(invoiceUuid).addItem(newItem);
+	                }
+	            }
+
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading invoice items", e);
+	        }
+
+	        return invoiceMap;
+	    }
+	}
+package com.vgb;
+ 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+ 
+/**
+ * Loads data from a database (Persons, Companies, Items, Invoice Items)
+ */
+public class JDBCDataLoader {
+ 
+	    public static Map<String, Person> loadPersonDataJDBC(ConnectionPool pool, Map<String, Person> personMap) {
+	        String query = """
+	            SELECT p.personId, p.uuid AS uuid, p.firstName, p.lastName, p.phone, e.email
+	            FROM Person p
+	            LEFT JOIN Email e ON p.personId = e.personId
+	        """;
+ 
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+ 
+	            Map<String, List<String>> emailMap = new HashMap<>();
+ 
+	            while (rs.next()) {
+	                String uuid = rs.getString("uuid");
+	                emailMap.computeIfAbsent(uuid, k -> new ArrayList<>());
+	                String email = rs.getString("email");
+	                if (email != null) emailMap.get(uuid).add(email);
+ 
+	                if (!personMap.containsKey(uuid)) {
+	                    String firstName = rs.getString("firstName");
+	                    String lastName = rs.getString("lastName");
+	                    String phone = rs.getString("phone");
+	                    Person person = new Person(UUID.fromString(uuid), lastName, firstName, phone, emailMap.get(uuid));
+	                    personMap.put(uuid, person);
+	                }
+	            }
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading person data", e);
+	        }
+ 
+	        return personMap;
+	    }
+ 
+	    public static Map<String, Company> loadCompanyDataJDBC(ConnectionPool pool, Map<String, Company> companyMap, Map<String, Person> personMap) {
+	        String query = """
+	            SELECT c.companyId, c.uuid AS uuid, c.name, c.contactId,
+	                   a.street, z.city, z.zipCode AS zip, s.stateName,
+	                   p.personId, p.uuid AS personUuid
+	            FROM Company c
+	            JOIN Address a ON c.addressId = a.addressId
+	            JOIN Zip z ON a.zipId = z.zipId
+	            JOIN State s ON z.stateId = s.stateId
+	            JOIN Person p ON c.contactId = p.personId
+	        """;
+ 
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+ 
+	            while (rs.next()) {
+	                String companyUuid = rs.getString("uuid");
+	                String name = rs.getString("name");
+	                String street = rs.getString("street");
+	                String city = rs.getString("city");
+	                String state = rs.getString("stateName");
+	                String zip = rs.getString("zip");
+ 
+	                Address address = new Address(street, city, state, zip);
+	                String contactUuid = rs.getString("personUuid");
+	                Person contact = personMap.get(contactUuid);
+ 
+	                if (contact == null) {
+	                    System.out.println("No contact found for company " + companyUuid);
+	                    continue;
+	                }
+ 
+	                Company company = new Company(UUID.fromString(companyUuid), contact, name, address);
+	                companyMap.put(companyUuid, company);
+	            }
+ 
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading company data", e);
+	        }
+ 
+	        return companyMap;
+	    }
+ 
+	    public static Map<String, Item> loadItemDataJDBC(ConnectionPool pool, Map<String, Item> itemMap, Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT i.uuid, i.name, i.type, i.price, i.materialUnit, i.equipmentModelNumber,
+	                   i.contractCompanyId, c.uuid AS companyUuid
+	            FROM Item i
+	            LEFT JOIN Company c ON i.contractCompanyId = c.companyId
+	        """;
+ 
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+ 
+	            while (rs.next()) {
+	                String uuid = rs.getString("uuid");
+	                String name = rs.getString("name");
+	                char type = rs.getString("type").charAt(0);
+	                double price = rs.getDouble("price");
+	                Item item = null;
+ 
+	                switch (type) {
+	                    case 'M':
+	                        String materialUnit = rs.getString("materialUnit");
+	                        item = new Material(UUID.fromString(uuid), name, materialUnit, price);
+	                        break;
+	                    case 'E':
+	                        String modelNumber = rs.getString("equipmentModelNumber");
+	                        item = new Equipment(UUID.fromString(uuid), name, modelNumber, price);
+	                        break;
+	                    case 'C':
+	                        String companyId = rs.getString("contractCompanyId");
+	                        Company contractCompany = companyMap.get(companyId);
+	                        if (contractCompany != null) {
+	                            item = new Contract(UUID.fromString(uuid), name, contractCompany);
+	                        }
+	                        break;
+	                }
+ 
+	                if (item != null) {
+	                    itemMap.put(uuid, item);
+	                }
+	            }
+ 
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading item data", e);
+	        }
+ 
+	        return itemMap;
+	    }
+ 
+	    public static Map<String, Invoice> loadInvoiceDataJDBC(ConnectionPool pool, Map<String, Invoice> invoiceMap,
+	                                                            Map<String, Person> personMap, Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT i.uuid AS invoiceUuid, i.date, p.uuid AS personUuid, c.uuid AS companyUUID
+	            FROM Invoice i
+	            LEFT JOIN Person p ON i.salesPersonId = p.personId
+	            LEFT JOIN Company c ON i.customerId = c.companyId
+	        """;
+ 
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+ 
+	            while (rs.next()) {
+	                String invoiceUuid = rs.getString("invoiceUuid");
+	                LocalDate date = LocalDate.parse(rs.getString("date"));
+	                Company company = companyMap.get(rs.getString("companyUUID"));
+	                Person person = personMap.get(rs.getString("personUuid"));
+ 
+	                Invoice invoice = new Invoice(UUID.fromString(invoiceUuid), date, company, person);
+	                invoiceMap.put(invoiceUuid, invoice);
+	            }
+ 
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading invoice data", e);
+	        }
+ 
+	        return invoiceMap;
+	    }
+ 
+	    public static Map<String, Invoice> loadInvoiceItemsJDBC(ConnectionPool pool, Map<String, Invoice> invoiceMap, Map<String, Item> itemMap,
+	    		Map<String, Company> companyMap) {
+	        String query = """
+	            SELECT ii.invoiceId, i.uuid AS itemUuid, i.name AS itemName, ii.type,
+	                   i.price, i.materialUnit, i.equipmentModelNumber AS modelNumber,
+	                   ii.materialQuantity AS quantity, ii.rentalHours AS hours,
+	                   ii.leaseStartDate, ii.leaseEndDate, inv.uuid AS invoiceUuid, c.uuid AS contractCompanyUuid
+	            FROM InvoiceItem ii
+	            JOIN Item i ON ii.itemId = i.itemId
+	            LEFT JOIN Company c ON i.contractCompanyId = c.companyId
+	            JOIN Invoice inv ON ii.invoiceId = inv.invoiceId
+	        """;
+ 
+	        try (Connection conn = pool.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query);
+	             ResultSet rs = ps.executeQuery()) {
+ 
+	            while (rs.next()) {
+	                String invoiceUuid = rs.getString("invoiceUuid");
+	                String itemUuid = rs.getString("itemUuid");
+	                String name = rs.getString("itemName");
+	                char type = rs.getString("type").charAt(0);
+	                double price = rs.getDouble("price");
+	                Company company = companyMap.get(rs.getString("contractCompanyUuid"));
+ 
+	                Item newItem = switch (type) {
+	                    case 'M' -> new Material(UUID.fromString(itemUuid), name, rs.getString("materialUnit"), price, rs.getInt("quantity"));
+	                    case 'R' -> new RentedItem(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price, rs.getDouble("hours"));
+	                    case 'L' -> new LeasedItem(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price,
+	                            LocalDate.parse(rs.getString("leaseStartDate")), LocalDate.parse(rs.getString("leaseEndDate")), 0.5);
+	                    case 'P' -> new Equipment(UUID.fromString(itemUuid), name, rs.getString("modelNumber"), price);
+	                    case 'C' -> new Contract(UUID.fromString(itemUuid), name, company, price);
+	                
+	                    default -> null;
+	                };
+ 
+	                if (newItem != null) {
+	                    invoiceMap.get(invoiceUuid).addItem(newItem);
+	                }
+	            }
+ 
+	        } catch (SQLException e) {
+	            throw new RuntimeException("Error loading invoice items", e);
+	        }
+ 
+	        return invoiceMap;
+	    }
+	}
