@@ -1,4 +1,4 @@
-ackage com.vgb;
+package com.vgb;
  
 import java.util.UUID;
  
